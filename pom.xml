@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<spock.version>1.2-groovy-2.4</spock.version>
+		<liquibase.version>3.4.1</liquibase.version>
 	</properties>
 
 	<dependencies>
@@ -48,11 +49,19 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>${liquibase.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

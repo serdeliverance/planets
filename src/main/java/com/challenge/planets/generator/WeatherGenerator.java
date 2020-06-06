@@ -3,6 +3,7 @@ package com.challenge.planets.generator;
 import com.challenge.planets.converter.CoordenateConverter;
 import com.challenge.planets.domain.Constellation;
 import com.challenge.planets.domain.Planet;
+import com.challenge.planets.domain.Weather;
 import com.challenge.planets.repository.WeatherRepository;
 import com.challenge.planets.service.WeatherService;
 import org.springframework.stereotype.Component;
@@ -25,10 +26,10 @@ public class WeatherGenerator {
 
     public void calculateForecast(List<Planet> planets, int period) {
         int limit = period + 1;
-        IntStream.range(1, limit)
+        List<Weather> weathers = IntStream.range(1, limit)
                 .mapToObj(i -> new Constellation(i, planets.stream().map(p -> CoordenateConverter.convert(p,i)).collect(toList())))
                 .map(weatherService::calculateWeather)
-                .forEach(System.out::println);
-                // .forEach(c -> climaRepository.save(c));
+                .collect(toList());
+        weatherRepository.saveAll(weathers);
     }
 }

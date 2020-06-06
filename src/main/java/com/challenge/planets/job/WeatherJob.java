@@ -62,9 +62,9 @@ public class WeatherJob implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info("calculate forecast");
 
-        Planet ferengi = new Planet("ferengi", ferengiRadius, ferengAngularVelocity, ferengiInitialDelta);
-        Planet betasoide = new Planet("betasoide", betasoideRadius, betasoideAngularVelocity, betasoideInitialDelta);
-        Planet vulcano = new Planet("vulcano", vulcanoRadius, vulcanoAngularVelocity, vulcanoInicialDelta);
+        Planet ferengi = Planet.of("ferengi", ferengiRadius, ferengAngularVelocity, ferengiInitialDelta);
+        Planet betasoide = Planet.of("betasoide", betasoideRadius, betasoideAngularVelocity, betasoideInitialDelta);
+        Planet vulcano = Planet.of("vulcano", vulcanoRadius, vulcanoAngularVelocity, vulcanoInicialDelta);
 
         log.info("years: {}\nplanets:\n{}\n{}\n{}", years, ferengi, betasoide, vulcano);
 

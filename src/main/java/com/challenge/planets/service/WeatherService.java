@@ -30,15 +30,15 @@ public class WeatherService {
 
     public Weather calculateWeather(Constellation constellation) {
         if (areCollinear(constellation)) {
-            return areCollinearWithTheSun(constellation) ? new Weather(constellation.getDay(), DROUGHT) : new Weather(constellation.getDay(), OPTIMUS);
+            return areCollinearWithTheSun(constellation) ? Weather.of(constellation.getDay(), DROUGHT) : Weather.of(constellation.getDay(), OPTIMUS);
         }
 
         if (isSunInsideTriangle(constellation)) {
             processMaxPerimeter(constellation);
-            return new Weather(constellation.getDay(), RAINING);
+            return Weather.of(constellation.getDay(), RAINING);
         }
 
-        return new Weather(constellation.getDay(), NORMAL);
+        return Weather.of(constellation.getDay(), NORMAL);
     }
 
     private boolean isSunInsideTriangle(Constellation constellation) {
